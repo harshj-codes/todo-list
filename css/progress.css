@@ -1,0 +1,50 @@
+/* Progress section container */
+.progress-section {
+    background-color: var(--color-surface);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* Top row */
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Progress label */
+.progress-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* 0 of 0 done count */
+.progress-count {   
+    font-size: var(--text-sm);
+    font-family: 'DM Mono', monospace;
+    color: var(--color-text-secondary);
+}
+
+/* The grey track behind the bar */
+.progress-bar-track {
+    width: 100%;
+    height: 8px;
+    background-color: var(--color-border);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+/* The blue fill inside the track */
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-accent);
+    border-radius: var(--radius-full);
+    transition: width 0.4s ease;
+}

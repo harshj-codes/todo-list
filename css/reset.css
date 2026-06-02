@@ -1,0 +1,48 @@
+/* Apply box-sizing to everything */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base font and smooth rendering */
+body {
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Lists have no bullets or numbers */
+ul, ol {
+    list-style: none;
+}
+
+/* Buttons have no default style */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Inputs and select inherits font from body */
+input, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Links have no underline */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Images don't overflow their container */
+img {
+    max-width: 100%;
+    display: block;
+}
+

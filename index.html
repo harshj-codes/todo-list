@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <meta name="author" content="Harsh" />
+  <meta name="description" content="A clean and simple todo list web app" />
+
+  <!-- Google Fonts — DM Sans for UI, DM Mono for counts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/input.css" />
+    <link rel="stylesheet" href="css/filters.css" />
+    <link rel="stylesheet" href="css/progress.css" />
+    <link rel="stylesheet" href="css/task-list.css" />
+    <link rel="stylesheet" href="css/task-card.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/dark-mode.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+</head>
+
+<body>
+    <div class="app-wrapper">
+
+      <header class="app-header">
+
+        <!-- Left side — icon + title -->
+        <div class="header-left">
+          <span class="header-icon">✦</span>
+          <h1 class="header-title">My Tasks</h1>
+        </div>
+
+        <!-- Right side — dark mode toggle button -->
+        <button class="dark-mode-toggle" id="darkModeToggle">
+          🌙
+        </button>
+
+      </header>
+
+      <main class="app-main">
+
+        <section class="input-section">
+
+          <!-- Task name input -->
+          <input
+            type="text"
+            class="task-input"
+            id="taskInput"
+            placeholder="What needs to be done?"
+            maxlength="120"
+            autocomplete="off"
+          />
+
+          <!-- Priority dropdown -->
+          <select class="priority-select" id="prioritySelect">
+            <option value="low">🟢 Low</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="high">🔴 High</option>
+          </select>
+
+          <!-- Category dropdown -->
+           <select class="category-select" id="categorySelect">
+            <option value="general" selected>📋 General</option>
+            <option value="work">💼 Work</option>
+            <option value="personal">🙂 Personal</option>
+            <option value="study">📚 Study</option>
+           </select>
+
+           <!--- Due date picker-->
+           <input
+            type="date"
+            class="due-date-input"
+            id="dueDateInput"
+          />
+
+          <!-- Add task button -->
+           <button class="add-btn" id="addTaskBtn">
+            + Add
+           </button>
+
+        </section>
+
+        <section class="search-sort-bar">
+
+          <!--- Search input-->
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search tasks"
+            autocomplete="off"
+          />
+
+          <!--- Sort dropdown-->
+          <select class="sort-select" id="sortSelect">
+            <option value="default">Sort: Default</option>
+            <option value="priority">Sort: Priority</option>
+            <option value="date">Sort: Due Date</option>
+            <option value="name">Sort: Name</option>
+          </select>
+
+        </section>
+
+        <section class="filter-section">
+
+          <!-- Filter tabs — All / Active / Completed -->
+          <div class="filter-tabs">
+
+            <button class="filter-tab active" data-filter="all">
+              All <span class="tab-count" id="countAll">0</span>
+            </button>
+
+            <button class="filter-tab" data-filter="active">
+              Active <span class="tab-count" id="countActive">0</span>
+            </button>
+
+            <button class="filter-tab" data-filter="completed">
+              Completed <span class="tab-count" id="countCompleted">0 </span>
+            </button>
+
+          </div>
+
+          <!-- Category pills — filter by category -->
+          <div class="category-pills">
+
+            <button class="category-pill active" data-category="all">All</button>
+            <button class="category-pill" data-category="general">📋 General</button>
+            <button class="category-pill" data-category="work">💼 Work</button>
+            <button class="category-pill" data-category="personal">🙂 Personal</button>
+            <button class="category-pill" data-category="study">📚 Study</button>
+
+          </div>
+
+        </section>
+
+        <section class="progress-section">
+          
+          <!--- Label + Count -->
+          <div class="progress-header">
+            <span class="progress-label">Progress</span>
+            <span class="progress-count" id="progressCount">0 of 0 done</span>
+          </div>
+
+          <!--- Progress bar track + fill -->
+          <div
+            class="progress-bar-track"
+            id="progressBarTrack"
+            role="progressbar"
+            aria-label="Task completion progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div
+              class="progress-bar-fill"
+              id="progressBarFill"
+            ></div>
+          </div>  
+            
+        </section>
+
+        <section class="task-list-section">
+
+          <!--- Task List: JS will inject tasks here-->
+          <ul class="task-list" id="taskList"></ul>
+
+          <!-- Empty state: show when no tasks exist -->
+           <div class="empty-state" id="emptyState">
+
+             <p class="empty-icon">🗒️</p>
+            <p class="empty-title">No tasks here</p>
+            <p class="empty-subtitle">Add one above to get started!</p>
+
+           </div>
+
+        </section>
+
+        <section class="bulk-sections">
+
+          <!-- Clear all completed tasks -->
+           <button class="bulk-btn" id="clearCompletedBtn">🗑️ Clear completed</button>
+
+           <!-- Mark all tasks as done -->
+            <button class="bulk-btn" id="markAllBtn">✅ Mark all done</button>
+
+        </section>
+
+      </main>
+
+      <footer class="app-footer">
+        <p>Built with HTML · CSS · JS &nbsp;|&nbsp; Tasks saved locally</p>
+      </footer>
+
+    </div>
+
+    <div class="modal-overlay" id="editModal" hidden>
+
+      <div class="modal-box">
+
+        <!-- Modal header -->
+        <div class="modal-header">
+          <h2 class="modal-title">Edit Task</h2>
+          <button class="modal-close-btn" id="modalCloseBtn">✕</button>
+        </div>
+
+        <!-- Modal body: edit fields -->
+        <div class="modal-body">
+
+          <label for="editTaskInput">Task name</label>
+          <input type="text" class="modal-input" id="editTaskInput" maxlength="120" />
+
+          <label for="editPrioritySelect">Priority</label>
+          <select class="modal-select" id="editPrioritySelect">
+            <option value="low">🟢 Low</option>
+            <option value="medium">🟡 Medium</option>
+            <option value="high">🔴 High</option>
+          </select>
+
+          <label for="editCategorySelect">Category</label>
+          <select class="modal-select" id="editCategorySelect">
+            <option value="general">📋 General</option>
+            <option value="work">💼 Work</option>
+            <option value="personal">🙂 Personal</option>
+            <option value="study">📚 Study</option>
+          </select>
+
+          <label for="editDueDateInput">Due Date</label>
+          <input type="date" class="modal-date" id="editDueDateInput" />
+
+        </div> 
+
+        <!-- Modal footer: action buttons -->
+        <div class="modal-footer">
+          <button class="modal-cancel-btn" id="modalCancelBtn">Cancel</button>
+          <button class="modal-save-btn" id="modalSaveBtn">Save changes</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/task.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/sort.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/darkmode.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

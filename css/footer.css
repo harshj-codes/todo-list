@@ -1,0 +1,12 @@
+.app-footer {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    opacity: 0.85;
+    padding: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.app-footer p {
+    color: var(--color-text-secondary);
+} 

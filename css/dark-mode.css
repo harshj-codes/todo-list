@@ -1,0 +1,46 @@
+/* Colors: Dark Mode */
+[data-theme="dark"] {
+    --color-bg: #0f0f0f;
+    --color-surface: #1a1a1a;
+    --color-border: #2e2e2e;
+    --color-text-primary: #f0f0f0;
+    --color-text-secondary: #888888;
+    --color-accent: #3b82f6;
+    --color-accent-hover: #2563eb;
+}
+
+/* Priority badge colors in dark mode */
+[data-theme="dark"] .badge-high {
+    background-color: #3b0f0f;
+    color: #f87171;
+}
+
+[data-theme="dark"] .badge-medium {
+    background-color: #3b2a0f;
+    color: #fbbf24;
+}
+
+[data-theme="dark"] .badge-low {
+    background-color: #0f2e1a;
+    color: #4ade80;
+}
+
+/* Overdue badge in dark mode */
+[data-theme="dark"] .badge-due.overdue {
+    background-color: #3b0f0f;
+    color: #f87171;
+    border-color: #f87171;
+}
+
+[data-theme="dark"] .category-pill.active {
+    color: #000000;
+}
+
+[dark-theme="dark"] .app-footer,
+[dark-theme="dark"] ,app-footer p {
+    color: bdbdbd;
+}
+
+[dark-theme="dark"] .due-date-input {
+    color-scheme: dark;
+}
