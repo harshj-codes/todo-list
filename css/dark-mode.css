@@ -36,11 +36,31 @@
     color: #000000;
 }
 
-[dark-theme="dark"] .app-footer,
-[dark-theme="dark"] ,app-footer p {
-    color: bdbdbd;
+[data-theme="dark"] .app-footer,
+[data-theme="dark"] ,app-footer p {
+    color: #bdbdbd;
 }
 
 [dark-theme="dark"] .due-date-input {
     color-scheme: dark;
+}
+
+[data-theme="dark"] .theme-switch {
+    background-color: var(--color-accent);
+}
+
+[data-theme="dark"] .switch-thumb {
+    transform: translateX(30px);
+}
+
+[data-theme="dark"] .theme-switch-wrapper .theme-icon:first-child {
+    opacity: 0.25;
+}
+
+[data-theme="dark"] .theme-switch-wrapper .theme-icon:last-child {
+    opacity: 1;
+}
+
+:root .theme-switch-wrapper .theme-icon:first-child {
+    opacity: 1;
 }
